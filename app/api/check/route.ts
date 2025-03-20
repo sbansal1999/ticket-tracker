@@ -4,6 +4,8 @@ export async function GET() {
   try {
     const response = await fetch('https://rcbmpapi.ticketgenie.in/ticket/eventlist/O');
     const data = await response.json();
+
+    console.log("endpoint triggered")
     
     if (data.status === 'Success') {
       const events = data.result;
