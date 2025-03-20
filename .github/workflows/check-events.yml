@@ -12,6 +12,6 @@ jobs:
     steps:
       - name: Check event status
         run: |
-          curl -X GET https://rcbmpapi.ticketgenie.in/ticket/eventlist/O \
+          curl -X GET https://project-sigma-beige.vercel.app/ \
           -H "Accept: application/json" \
           -H "User-Agent: GitHub-Action"
