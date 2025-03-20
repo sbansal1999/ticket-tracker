@@ -9,6 +9,7 @@ export async function GET() {
     
     if (data.status === 'Success') {
       const events = data.result;
+      console.log(events);
       
       events.forEach((event: any) => {
         if (event.event_Code === 2 && event.event_Button_Text !== 'PHASE 1 SOLD OUT') {
