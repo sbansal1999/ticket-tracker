@@ -1,0 +1,29 @@
+{
+  "name": "iris-cdc-checker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.3",
+    "axios": "^1.6.7",
+    "cheerio": "^1.0.0-rc.12",
+    "dotenv": "^16.4.1",
+    "express": "^4.18.2",
+    "resend": "^3.1.0"
+  },
+  "type": "module",
+  "devDependencies": {
+    "husky": "^9.0.10",
+    "lint-staged": "^15.2.1"
+  },
+  "lint-staged":{
+    "**/*.{js,jsx,ts,tsx}": "npx prettier --write"
+  }
+}
