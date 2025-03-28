@@ -25,7 +25,7 @@ app.get("/scrape", async (req, res) => {
     const eventName = responseJson.result.event_Name;
     const stands = responseJson.result.stands;
 
-    if (stands.length === 1) {
+    if (stands.length > 1) {
       await resend.emails.send({
         from: "Ticket Tracker<onboarding@resend.dev>",
         to: "sbansal1999@gmail.com",
