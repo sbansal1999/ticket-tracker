@@ -18,7 +18,7 @@ app.get("/scrape", async (req, res) => {
       headers: myHeaders,
     };
 
-    const request = await fetch("https://rcbmpapi.ticketgenie.in/ticket/standslist/2", requestOptions);
+    const request = await fetch("https://rcbmpapi.ticketgenie.in/ticket/standslist/4", requestOptions);
     const responseJson = await request.json();
 
     console.log(responseJson);
