@@ -10,32 +10,6 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 app.get("/scrape", async (req, res) => {
   try {
-    const myHeaders = new Headers();
-    myHeaders.append("authorization", "Bearer " + process.env.TICKET_GENIE_API_KEY);
-
-    const requestOptions = {
-      method: "GET",
-      headers: myHeaders,
-    };
-
-    const request = await fetch("https://rcbmpapi.ticketgenie.in/ticket/standslist/4", requestOptions);
-    const responseJson = await request.json();
-
-    console.log(responseJson);
-    const eventName = responseJson.result.event_Name;
-    const stands = responseJson.result.stands;
-
-    if (stands.length > 1) {
-      await resend.emails.send({
-        from: "Ticket Tracker<onboarding@resend.dev>",
-        to: "sbansal1999@gmail.com",
-        subject: "CHECK TICKETS ASAP",
-        text: "CHECK TICKETS ASAP",
-      });
-    }
-    console.log(eventName);
-    console.log(stands);
-
     const overallStandRequest = await fetch("https://rcbmpapi.ticketgenie.in/ticket/eventlist/O");
     const overallStandRequestJson = await overallStandRequest.json();
 
