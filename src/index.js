@@ -36,6 +36,21 @@ app.get("/scrape", async (req, res) => {
     console.log(eventName);
     console.log(stands);
 
+    const overallStandRequest = await fetch("https://rcbmpapi.ticketgenie.in/ticket/eventlist/O");
+    const overallStandRequestJson = await overallStandRequest.json();
+
+    console.log(overallStandRequestJson);
+    const results = overallStandRequestJson.result;
+
+    if(results.length > 3){
+      await resend.emails.send({
+        from: "Ticket Tracker<onboarding@resend.dev>",
+        to: "sbansal1999@gmail.com",
+        subject: "CHECK TICKETS ASAP - NEW MATCH ADDED",
+        text: "CHECK TICKETS ASAP",
+      });
+    }
+
     res.json("data");
   } catch (error) {
     res.status(500).json({ error: error.message });
