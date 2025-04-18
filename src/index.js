@@ -16,7 +16,7 @@ app.get("/scrape", async (req, res) => {
     console.log(overallStandRequestJson);
     const results = overallStandRequestJson.result;
 
-    if(results.length > 3){
+    if(results.length > 4){
       await resend.emails.send({
         from: "Ticket Tracker<onboarding@resend.dev>",
         to: "sbansal1999@gmail.com",
