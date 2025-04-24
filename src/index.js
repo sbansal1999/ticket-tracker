@@ -21,7 +21,7 @@ app.get("/scrape", async (req, res) => {
     const cskMatchResult = results.filter(result => result["event_Code"] === cskMatchEventCode)[0];
     const buttonText = cskMatchResult["event_Button_Text"];
 
-    if(buttonText !== "BUY TICKETS"){
+    if(buttonText === "BUY TICKETS"){
       await resend.emails.send({
         from: "Ticket Tracker<onboarding@resend.dev>",
         to: "sbansal1999@gmail.com",
