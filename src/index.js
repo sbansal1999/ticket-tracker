@@ -16,7 +16,12 @@ app.get("/scrape", async (req, res) => {
     console.log(overallStandRequestJson);
     const results = overallStandRequestJson.result;
 
-    if(results.length > 4){
+    const cskMatchEventCode = 6;
+
+    const cskMatchResult = results.filter(result => result["event_Code"] === cskMatchEventCode)[0];
+    const buttonText = cskMatchResult["event_Button_Text"];
+
+    if(buttonText !== "BUY TICKETS"){
       await resend.emails.send({
         from: "Ticket Tracker<onboarding@resend.dev>",
         to: "sbansal1999@gmail.com",
@@ -25,7 +30,7 @@ app.get("/scrape", async (req, res) => {
       });
     }
 
-    res.json("data");
+    res.json(cskMatchResult);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
