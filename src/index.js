@@ -16,10 +16,10 @@ app.get("/scrape", async (req, res) => {
     console.log(overallStandRequestJson);
     const results = overallStandRequestJson.result;
 
-    const cskMatchEventCode = 6;
+    const kkrMatchEventCode = 8;
 
-    const cskMatchResult = results.filter(result => result["event_Code"] === cskMatchEventCode)[0];
-    const buttonText = cskMatchResult["event_Button_Text"];
+    const kkrMatchResult = results.filter(result => result["event_Code"] === kkrMatchEventCode)[0];
+    const buttonText = kkrMatchResult["event_Button_Text"];
 
     if(buttonText === "BUY TICKETS"){
       await resend.emails.send({
@@ -30,7 +30,7 @@ app.get("/scrape", async (req, res) => {
       });
     }
 
-    res.json(cskMatchResult);
+    res.json(kkrMatchResult);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
